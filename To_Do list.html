@@ -1,0 +1,152 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do</title>
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+
+}
+
+body {
+    background-color: #CAE8BD;
+
+}
+
+.container {
+    margin: 200px;
+    margin-left: 500px;
+    background-color: #c8db9c;
+    width: 600px;
+    height: 400px;
+    border-radius: 3px;
+    align-items: center;
+    border-radius: 30px;
+}
+
+img {
+    width: 40px;
+    margin-left: 10px;
+    border-radius: 20px;
+}
+
+.container h1 {
+    text-align: center;
+    margin-top: 80px;
+    padding-top: 40px;
+
+}
+
+#add {
+    margin: 0px 0px px 90px;
+    align-content: center;
+    padding: 40px 30px 70px;
+}
+
+input {
+    width: 400px;
+    height: 25px;
+    border-radius: 40px;
+    border-color: solid black;
+    padding-left: 20px;
+    border: none;
+    background-color: aliceblue;
+}
+
+button {
+    width: 100px;
+    height: 25px;
+    border-radius: 40px;
+    background-color: forestgreen;
+    color: white;
+    margin-left: 10px;
+    border: none
+}
+
+li {
+    margin-left: 50px;
+    list-style-type: circle;
+    list-style-type: 40px;
+    width: 100px;
+}
+
+li button {
+    margin-left: 450px;
+    background-color: #B0DB9C;
+    justify-items: space-between;
+    border: none;
+    color: black;
+    font-size: 15px;
+    position: absolute;
+    line-height: 40px;
+    height: 30px;
+    width: 30px;
+    border-radius: 10px;
+    justify-content: space-between;
+
+
+}
+
+.task {
+    display: flex;
+    word-break: break-all;
+    margin-left: 20px;
+    margin-top:5px;
+   
+}
+button:hover{
+    background-color: darkred;
+}
+    </style>
+    
+</head>
+
+<body>
+    <div class="container">
+        <h1>To-Do List<img src="download.png" alt="To-Do App"></h1>
+
+        <div id="add">
+            <input type="text" id="input-box" placeholder="Add your text">
+            <button>ADD TASK</button>
+            <ul class="list-container">
+                <!-- <li>apple</li> -->
+            </ul>
+        </div>
+    </div>
+    <script>const input = document.querySelector("#input-box")
+        const listContainer = document.querySelector(".list-container")
+        const btn = document.querySelector("button")
+        btn.addEventListener('click', () => {
+
+            console.log(input.value.trim());
+            if (input.value.trim() === "") {
+                alert("write Something!")
+            }
+            else {
+                const li = document.createElement("li");
+                li.className='task';
+                li.innerHTML = `${input.value} <button>X</button> `;
+                listContainer.prepend(li);
+                li.style.fontSize = "20px";
+                li.style.width="450px";
+            
+                input.value = "";
+                li.addEventListener('click', (e) => {
+                    if (e.target.tagName === 'BUTTON') {
+                        e.target.parentNode.remove();
+                    }
+
+                });
+
+            }
+        });
+
+    </script>
+</body>
+
+</html>
